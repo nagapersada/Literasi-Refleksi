@@ -1,0 +1,1603 @@
+<!DOCTYPE html>
+<html lang="id" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>TENANG + 3S: Refleksi &amp; Nasihat Kebangsaan dan Keluarga</title>
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#0A2618">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="TENANG + 3S">
+    <meta name="description" content="Aplikasi Web Interaktif PWA Refleksi Kebangsaan & Keluarga Islami karya Deka Sonjaya & Modern Spiritual">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emerald: {
+                            950: '#04150D',
+                            900: '#0A2618',
+                            850: '#0D3321',
+                            800: '#14422E',
+                            700: '#1A533B',
+                            600: '#236C4E',
+                        },
+                        gold: {
+                            100: '#FFF8E7',
+                            200: '#FDF0CD',
+                            300: '#F3E5AB',
+                            400: '#E5C158',
+                            500: '#D4AF37',
+                            600: '#AA8827',
+                            700: '#806318',
+                        },
+                        cream: '#F8F3E6',
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'Cinzel', 'Georgia', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        header: ['Cinzel', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts & FontAwesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* Base Reset & Dynamic Viewport Dimensions for iOS & Android */
+        html, body {
+            height: 100%;
+            height: 100dvh;
+            width: 100vw;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #04150D;
+            color: #F8F3E6;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+
+        /* Safe Area Padding for iOS Notches & Home Bars */
+        .safe-area-inset {
+            padding-top: env(safe-area-inset-top, 0px);
+            padding-bottom: env(safe-area-inset-bottom, 0px);
+            padding-left: env(safe-area-inset-left, 0px);
+            padding-right: env(safe-area-inset-right, 0px);
+        }
+
+        .font-quote {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .font-header {
+            font-family: 'Cinzel', serif;
+        }
+
+        /* Metallic Gold Gradient Texts */
+        .text-gold-gradient {
+            background: linear-gradient(135deg, #FFF8E7 0%, #E5C158 45%, #D4AF37 75%, #AA8827 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .text-gold-metallic {
+            background: linear-gradient(180deg, #FFFFFF 0%, #F3E5AB 30%, #D4AF37 70%, #AA8827 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Geometric Islamic Background Pattern */
+        .bg-islamic-pattern {
+            background-color: #04150D;
+            background-image: radial-gradient(rgba(212, 175, 55, 0.08) 1px, transparent 1px), 
+                              radial-gradient(rgba(212, 175, 55, 0.05) 1px, #0A2618 1px);
+            background-size: 36px 36px;
+            background-position: 0 0, 18px 18px;
+        }
+
+        /* Glassmorphism Panels */
+        .glass-panel {
+            background: rgba(13, 51, 33, 0.76);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(212, 175, 55, 0.28);
+        }
+
+        .glass-btn {
+            background: rgba(20, 66, 46, 0.7);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(212, 175, 55, 0.35);
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-btn:hover, .glass-btn:active {
+            background: rgba(212, 175, 55, 0.3);
+            border-color: rgba(243, 229, 171, 0.75);
+            transform: translateY(-1px);
+        }
+
+        /* Gold Shimmer Button */
+        .btn-gold-shimmer {
+            background: linear-gradient(135deg, #AA8827 0%, #D4AF37 50%, #F3E5AB 100%);
+            color: #04150D;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.35);
+            transition: all 0.3s ease;
+        }
+
+        .btn-gold-shimmer::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                60deg,
+                transparent 30%,
+                rgba(255, 255, 255, 0.5) 50%,
+                transparent 70%
+            );
+            transform: rotate(30deg);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) rotate(30deg); }
+            100% { transform: translateX(100%) rotate(30deg); }
+        }
+
+        /* Dalil Quote Box */
+        .dalil-box {
+            background: rgba(6, 25, 15, 0.65);
+            border-left: 3px solid #D4AF37;
+        }
+
+        /* Slide Transition */
+        .slide-transition {
+            transition: opacity 0.35s ease-in-out, transform 0.35s ease-out;
+        }
+
+        /* Custom Scrollbars */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Equalizer Sound Wave Animation */
+        .sound-wave {
+            display: inline-flex;
+            align-items: flex-end;
+            height: 12px;
+            gap: 2px;
+        }
+        .sound-wave span {
+            width: 2px;
+            height: 100%;
+            background-color: #D4AF37;
+            animation: wave 1.2s infinite ease-in-out;
+        }
+        .sound-wave span:nth-child(1) { animation-delay: 0.0s; }
+        .sound-wave span:nth-child(2) { animation-delay: 0.2s; }
+        .sound-wave span:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes wave {
+            0%, 100% { height: 3px; }
+            50% { height: 12px; }
+        }
+    </style>
+</head>
+
+<body class="bg-islamic-pattern safe-area-inset flex flex-col justify-between selection:bg-gold-500 selection:text-emerald-950">
+
+    <!-- AUDIO PLAYER ELEMENT FOR SLIDES -->
+    <audio id="slideAudioPlayer" preload="auto"></audio>
+
+    <!-- Ambient Dynamic Glow Background -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+        <div class="absolute -top-32 -left-32 w-96 h-96 bg-gold-500/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-emerald-700/20 rounded-full blur-3xl"></div>
+    </div>
+
+
+    <!-- 1. HALAMAN PEMBUKA (SPLASH SCREEN / LANDING PAGE) -->
+    <div id="splashScreen" class="fixed inset-0 z-50 flex flex-col justify-between p-4 sm:p-8 bg-islamic-pattern overflow-y-auto">
+        
+        <!-- Top Ornamental Line -->
+        <div class="w-full flex justify-between items-center opacity-40">
+            <svg class="w-12 h-12 text-gold-400" viewBox="0 0 100 100" fill="none" stroke="currentColor"><path d="M5 5 H 40 V 15 H 15 V 40 H 5 Z"/><circle cx="25" cy="25" r="6"/></svg>
+            <div class="h-[1px] flex-1 mx-4 bg-gradient-to-r from-transparent via-gold-400 to-transparent"></div>
+            <svg class="w-12 h-12 text-gold-400 transform rotate-90" viewBox="0 0 100 100" fill="none" stroke="currentColor"><path d="M5 5 H 40 V 15 H 15 V 40 H 5 Z"/><circle cx="25" cy="25" r="6"/></svg>
+        </div>
+
+        <!-- Center Splash Content -->
+        <div class="my-auto max-w-2xl mx-auto text-center flex flex-col items-center py-6">
+            
+            <!-- Glowing Islamic Gold Logo -->
+            <div class="w-24 h-24 sm:w-32 sm:h-32 rounded-full border-2 border-gold-400/80 p-2 flex items-center justify-center bg-emerald-900/80 shadow-2xl shadow-gold-500/20 mb-6 relative group">
+                <div class="absolute inset-0 rounded-full border border-gold-300/40 animate-ping opacity-25"></div>
+                <svg viewBox="0 0 200 200" class="w-full h-full text-gold-400">
+                    <circle cx="100" cy="100" r="85" fill="none" stroke="#D4AF37" stroke-width="2" stroke-dasharray="6,4"/>
+                    <path d="M100,25 Q145,75 100,175 Q155,100 100,25 Z" fill="rgba(212, 175, 55, 0.15)" stroke="#F3E5AB" stroke-width="2"/>
+                    <path d="M80,100 Q100,60 120,100 Q100,140 80,100 Z" fill="none" stroke="#D4AF37" stroke-width="2"/>
+                    <circle cx="100" cy="100" r="10" fill="#FFF8E7"/>
+                </svg>
+            </div>
+
+            <!-- Main Title -->
+            <h1 class="font-header text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-wider text-gold-metallic leading-tight mb-3">
+                TENANG + 3S
+            </h1>
+            <h2 class="text-xs sm:text-base text-gold-300 font-semibold tracking-widest uppercase mb-6 font-header">
+                Refleksi &amp; Nasihat Kebangsaan dan Keluarga
+            </h2>
+
+            <!-- Ornamental Separator -->
+            <div class="flex items-center justify-center space-x-3 mb-6">
+                <div class="w-12 h-[1px] bg-gold-500/40"></div>
+                <i class="fa-solid fa-star-and-crescent text-gold-400 text-sm"></i>
+                <div class="w-12 h-[1px] bg-gold-500/40"></div>
+            </div>
+
+            <!-- Motivational Quote -->
+            <div class="glass-panel p-4 sm:p-6 rounded-2xl border border-gold-500/30 max-w-xl mb-8 shadow-xl">
+                <p class="font-quote text-sm sm:text-lg italic text-gold-100/90 leading-relaxed">
+                    "Negeri dan keluarga ini tidak diperbaiki oleh yang paling marah, melainkan oleh mereka yang paling bertakwa."
+                </p>
+            </div>
+
+            <!-- Main Entrance Action Button -->
+            <button onclick="enterMainApp()" class="btn-gold-shimmer px-8 py-3.5 sm:px-10 sm:py-4 rounded-full font-header text-sm sm:text-base font-bold tracking-wider uppercase flex items-center space-x-3 cursor-pointer hover:scale-105 transition transform active:scale-95">
+                <span>MASUK MATERI INTI</span>
+                <i class="fa-solid fa-arrow-right text-emerald-950"></i>
+            </button>
+        </div>
+
+        <!-- Bottom Splash Footer Credit -->
+        <div class="w-full text-center pb-2 pt-4 border-t border-gold-500/20">
+            <p class="text-xs sm:text-sm text-gold-300/80 font-medium tracking-wide">
+                Karya: <span class="text-gold-400 font-bold">Deka Sonjaya</span> &amp; <span class="text-gold-300 font-bold">Modern Spiritual</span>
+            </p>
+        </div>
+    </div>
+
+
+    <!-- MAIN APP HEADER -->
+    <header class="relative z-30 px-3 py-2 sm:px-6 sm:py-3 border-b border-gold-500/20 glass-panel">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            
+            <!-- Logo & Title -->
+            <div class="flex items-center space-x-2 sm:space-x-3 cursor-pointer" onclick="showSplashScreen()">
+                <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-full border border-gold-400/60 flex items-center justify-center bg-emerald-900/90 shadow-md">
+                    <i class="fa-solid fa-mosque text-gold-400 text-sm sm:text-lg"></i>
+                </div>
+                <div>
+                    <h1 class="font-header text-xs sm:text-base font-bold tracking-wider text-gold-gradient leading-tight">TENANG + 3S</h1>
+                    <p class="text-[9px] sm:text-xs text-gold-300/75 tracking-wider uppercase font-medium">Kebangsaan &amp; Keluarga</p>
+                </div>
+            </div>
+
+            <!-- Header Action Controls -->
+            <div class="flex items-center space-x-1.5 sm:space-x-2.5">
+                
+                <!-- 3. SLIDE AUDIO SPEAKER BUTTON -->
+                <button id="slideSpeakerBtn" onclick="toggleSlideAudio()" title="Suara Narasi Slide" class="glass-btn px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-full flex items-center space-x-1.5 text-xs text-gold-300 hover:text-gold-100 border border-gold-400/50">
+                    <i id="slideSpeakerIcon" class="fa-solid fa-volume-high text-gold-400"></i>
+                    <span id="slideSpeakerText" class="hidden md:inline font-medium">Audio Slide</span>
+                    <div id="slideAudioWave" class="sound-wave ml-1 hidden">
+                        <span></span><span></span><span></span>
+                    </div>
+                </button>
+
+                <!-- Fullscreen Toggle Button -->
+                <button onclick="toggleFullscreen()" title="Layar Penuh" class="glass-btn w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center text-gold-300 hover:text-gold-100">
+                    <i id="fullscreenIcon" class="fa-solid fa-expand text-xs sm:text-sm"></i>
+                </button>
+
+                <!-- Optional Ambient BGM Toggle -->
+                <button id="bgmToggleBtn" onclick="toggleBgm()" title="Musik Suasana Meditatif" class="glass-btn w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center text-gold-300 hover:text-gold-100">
+                    <i id="bgmIcon" class="fa-solid fa-music text-xs sm:text-sm opacity-70"></i>
+                </button>
+
+                <!-- Digital Tasbih Modal Toggle -->
+                <button onclick="toggleTasbihModal()" title="Tasbih & Zikir" class="glass-btn w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center text-gold-300 hover:text-gold-100">
+                    <i class="fa-solid fa-hand-holding-heart text-gold-400 text-xs sm:text-sm"></i>
+                </button>
+
+                <!-- Grid / Slide View Toggle -->
+                <button id="viewToggleBtn" onclick="toggleViewMode()" title="Daftar Isi / Slide" class="glass-btn w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center text-gold-300 hover:text-gold-100">
+                    <i id="viewToggleIcon" class="fa-solid fa-border-all text-xs sm:text-sm"></i>
+                </button>
+
+                <!-- PWA Install Button -->
+                <button id="installPwaBtn" onclick="promptInstallPWA()" class="hidden sm:flex items-center space-x-1.5 bg-gradient-to-r from-gold-600 via-gold-500 to-gold-400 text-emerald-950 font-bold px-3 py-1.5 rounded-full text-xs shadow-md hover:brightness-110">
+                    <i class="fa-solid fa-download"></i>
+                    <span>Install App</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MOBILE PWA BANNER -->
+    <div id="mobileInstallBanner" class="hidden sm:hidden relative z-30 bg-gold-500/10 border-b border-gold-500/30 px-3 py-1.5 flex items-center justify-between text-[11px]">
+        <div class="flex items-center space-x-1.5 text-gold-300">
+            <i class="fa-solid fa-mobile-screen text-gold-400"></i>
+            <span>Simpan aplikasi di layar HP Anda</span>
+        </div>
+        <button onclick="promptInstallPWA()" class="bg-gold-500 text-emerald-950 font-bold px-2.5 py-0.5 rounded-full text-[10px]">Install</button>
+    </div>
+
+    <!-- MAIN SLIDE DISPLAY CONTENT CONTAINER -->
+    <main class="relative z-10 flex-1 flex flex-col justify-center max-w-7xl w-full mx-auto px-2 sm:px-6 py-2 sm:py-4 overflow-hidden">
+        
+        <!-- CAROUSEL VIEW CONTAINER -->
+        <div id="carouselContainer" class="w-full flex-1 flex flex-col justify-center items-center">
+            
+            <!-- Slide Presentation Card -->
+            <div id="slideCard" class="w-full max-w-5xl relative rounded-2xl border border-gold-500/30 glass-panel shadow-2xl overflow-hidden slide-transition min-h-[480px] sm:min-h-[540px] lg:min-h-[580px] flex flex-col justify-between p-3.5 sm:p-6 md:p-8">
+                
+                <!-- Geometric Arabesque Corner Ornaments -->
+                <svg class="absolute top-2 left-2 w-8 h-8 sm:w-12 sm:h-12 text-gold-400/40 pointer-events-none" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 5 H 40 V 15 H 15 V 40 H 5 Z" />
+                    <circle cx="25" cy="25" r="7" stroke-width="1.5"/>
+                    <path d="M 5 5 L 35 35" stroke-dasharray="2 2"/>
+                </svg>
+                <svg class="absolute top-2 right-2 w-8 h-8 sm:w-12 sm:h-12 text-gold-400/40 pointer-events-none transform rotate-90" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 5 H 40 V 15 H 15 V 40 H 5 Z" />
+                    <circle cx="25" cy="25" r="7" stroke-width="1.5"/>
+                    <path d="M 5 5 L 35 35" stroke-dasharray="2 2"/>
+                </svg>
+                <svg class="absolute bottom-2 left-2 w-8 h-8 sm:w-12 sm:h-12 text-gold-400/40 pointer-events-none transform -rotate-90" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 5 H 40 V 15 H 15 V 40 H 5 Z" />
+                    <circle cx="25" cy="25" r="7" stroke-width="1.5"/>
+                    <path d="M 5 5 L 35 35" stroke-dasharray="2 2"/>
+                </svg>
+                <svg class="absolute bottom-2 right-2 w-8 h-8 sm:w-12 sm:h-12 text-gold-400/40 pointer-events-none transform rotate-180" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 5 H 40 V 15 H 15 V 40 H 5 Z" />
+                    <circle cx="25" cy="25" r="7" stroke-width="1.5"/>
+                    <path d="M 5 5 L 35 35" stroke-dasharray="2 2"/>
+                </svg>
+
+                <!-- SLIDE TOP BADGE & SLIDE NUMBER -->
+                <div class="flex items-center justify-between border-b border-gold-500/20 pb-2 relative z-10">
+                    <span id="slideTag" class="text-xs sm:text-sm font-semibold tracking-wider text-gold-400 uppercase font-header flex items-center space-x-1.5">
+                        <i class="fa-solid fa-moon text-gold-400/80 mr-1 text-xs"></i>
+                        <span id="slideTagText">SLIDE 1 - COVER</span>
+                    </span>
+                    <span id="slideCounter" class="text-xs text-gold-300/70 font-mono bg-emerald-950/60 px-2.5 py-0.5 rounded-full border border-gold-500/20">1 / 11</span>
+                </div>
+
+                <!-- SLIDE MIDDLE CONTENT (2-Column Responsive Layout) -->
+                <div class="my-auto py-2 sm:py-4 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-3 lg:gap-8 items-center">
+                    
+                    <!-- Left / Top Column: Vector Illustration & Quote -->
+                    <div class="lg:col-span-5 flex flex-col items-center justify-center text-center">
+                        <div id="slideSvgContainer" class="w-full max-w-[240px] sm:max-w-[300px] h-32 sm:h-44 lg:h-52 flex items-center justify-center my-1">
+                            <!-- SVG Vector Art injected via JS -->
+                        </div>
+                        <h2 id="slideQuote" class="font-quote text-lg sm:text-2xl lg:text-3xl font-bold text-gold-metallic leading-tight mt-1 sm:mt-2 drop-shadow-sm">
+                            <!-- Motto / Headline Quote injected via JS -->
+                        </h2>
+                    </div>
+
+                    <!-- Right / Bottom Column: Dalil Box & Core Points -->
+                    <div class="lg:col-span-7 flex flex-col justify-center space-y-2.5 sm:space-y-3.5">
+                        
+                        <!-- Dalil Box (Al-Qur'an / Hadits / Ulama Quote) -->
+                        <div id="slideDalilBox" class="dalil-box p-2.5 sm:p-3.5 rounded-r-xl transition-all">
+                            <div class="flex items-start space-x-2">
+                                <i class="fa-solid fa-book-quran text-gold-400 text-xs sm:text-sm mt-0.5"></i>
+                                <div>
+                                    <h4 id="slideDalilTitle" class="text-xs font-semibold text-gold-400 font-header">QS. Asy-Syura: 30</h4>
+                                    <p id="slideDalilText" class="text-xs sm:text-sm italic text-gold-100/90 mt-0.5 leading-relaxed font-serif">
+                                        "Musibah apa pun yang menimpa kamu adalah disebabkan oleh perbuatan tanganmu sendiri."
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Core Points (Poin-Poin Utama) -->
+                        <div class="bg-emerald-950/40 rounded-xl p-2.5 sm:p-3.5 border border-gold-500/20">
+                            <h3 class="text-[11px] sm:text-xs font-bold text-gold-400 uppercase tracking-widest font-header mb-1.5 flex items-center">
+                                <i class="fa-solid fa-list-check text-gold-400/80 mr-1.5 text-xs"></i>
+                                Poin Renungan Utama
+                            </h3>
+                            <ul id="slidePointsList" class="space-y-1 sm:space-y-1.5 text-xs sm:text-sm text-cream/90">
+                                <!-- Dynamic List Items Injected via JS -->
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- SLIDE BOTTOM ACTIONS -->
+                <div class="border-t border-gold-500/20 pt-2.5 flex flex-wrap items-center justify-between gap-2 relative z-10">
+                    <div class="flex items-center space-x-2">
+                        <!-- Full Script Reader Button -->
+                        <button onclick="openFullScriptModal()" class="glass-btn px-3 py-1.5 rounded-lg text-xs font-semibold text-gold-300 hover:text-gold-100 flex items-center space-x-1.5 border border-gold-400/40">
+                            <i class="fa-solid fa-scroll text-gold-400"></i>
+                            <span>Baca Narasi Lengkap</span>
+                        </button>
+                        
+                        <!-- Catatan Renungan Button -->
+                        <button onclick="openReflectionModal()" class="glass-btn px-3 py-1.5 rounded-lg text-xs text-gold-300 hover:text-gold-100 flex items-center space-x-1.5">
+                            <i class="fa-solid fa-pen-nib"></i>
+                            <span class="hidden sm:inline">Catatan Hati</span>
+                        </button>
+                    </div>
+
+                    <div class="flex items-center space-x-2">
+                        <!-- Share Quote -->
+                        <button onclick="shareCurrentQuote()" class="glass-btn px-3 py-1.5 rounded-lg text-xs text-gold-300 hover:text-gold-100 flex items-center space-x-1.5">
+                            <i class="fa-solid fa-share-nodes"></i>
+                            <span class="hidden sm:inline">Bagikan</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Carousel Slide Navigation Controls Bar -->
+            <div class="w-full max-w-5xl flex items-center justify-between mt-2.5 sm:mt-3 px-1">
+                <button onclick="prevSlide()" class="glass-btn px-3 py-2 sm:px-5 sm:py-2.5 rounded-xl text-gold-300 hover:text-gold-100 flex items-center space-x-1.5 font-medium text-xs sm:text-sm">
+                    <i class="fa-solid fa-chevron-left"></i>
+                    <span class="hidden sm:inline">Sebelumnya</span>
+                </button>
+
+                <!-- Dots Selector -->
+                <div id="dotsContainer" class="flex items-center space-x-1 sm:space-x-1.5 overflow-x-auto max-w-[50vw] sm:max-w-none px-2 py-1 no-scrollbar">
+                    <!-- Dynamic Dots -->
+                </div>
+
+                <button onclick="nextSlide()" class="glass-btn px-3 py-2 sm:px-5 sm:py-2.5 rounded-xl text-gold-300 hover:text-gold-100 flex items-center space-x-1.5 font-medium text-xs sm:text-sm">
+                    <span class="hidden sm:inline">Berikutnya</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+
+        </div>
+
+        <!-- GRID / DAFTAR ISI VIEW CONTAINER (Hidden by Default) -->
+        <div id="gridContainer" class="hidden w-full overflow-y-auto max-h-[82vh] no-scrollbar py-3">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5">
+                <!-- Cards dynamically populated via JS -->
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER INFO BAR -->
+    <footer class="relative z-20 py-2 px-4 border-t border-gold-500/20 text-center glass-panel">
+        <p class="text-[10px] sm:text-xs text-gold-300/75 font-light">
+            TENANG + 3S &copy; 2026 &bull; <span class="text-gold-400 font-semibold">Deka Sonjaya &amp; Modern Spiritual</span>
+        </p>
+    </footer>
+
+
+    <!-- MODAL 1: TEKS NARASI LENGKAP READER -->
+    <div id="scriptModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-3 sm:p-6 bg-emerald-950/85 backdrop-blur-md">
+        <div class="w-full max-w-2xl max-h-[88vh] glass-panel border border-gold-500/40 rounded-2xl p-4 sm:p-6 relative flex flex-col shadow-2xl overflow-hidden">
+            
+            <div class="flex items-center justify-between border-b border-gold-500/25 pb-3 mb-3">
+                <div class="flex items-center space-x-2.5">
+                    <i class="fa-solid fa-book-open-reader text-gold-400 text-xl"></i>
+                    <div>
+                        <h3 id="scriptModalSlideTag" class="font-header text-gold-gradient text-sm sm:text-base font-bold">SLIDE 1 - COVER</h3>
+                        <p class="text-[11px] text-gold-300/70">Naskah Narasi Lengkap Ceramah / Renungan</p>
+                    </div>
+                </div>
+                <button onclick="closeFullScriptModal()" class="w-8 h-8 rounded-full glass-btn text-gold-400 hover:text-white flex items-center justify-center">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="flex-1 overflow-y-auto pr-2 space-y-3 no-scrollbar my-2">
+                <h4 id="scriptModalTitle" class="font-quote text-lg sm:text-xl font-bold text-gold-metallic">Headline Narasi</h4>
+                <div id="scriptModalBody" class="text-xs sm:text-sm text-cream/90 font-sans leading-relaxed whitespace-pre-line space-y-2">
+                    <!-- Narasi Teks Asli injected here -->
+                </div>
+            </div>
+
+            <div class="border-t border-gold-500/25 pt-3 flex items-center justify-between">
+                <button onclick="copyCurrentScript()" class="glass-btn px-3 py-1.5 rounded-xl text-xs text-gold-300 hover:text-gold-100 flex items-center space-x-1.5">
+                    <i class="fa-solid fa-copy"></i>
+                    <span>Salin Narasi</span>
+                </button>
+                <button onclick="closeFullScriptModal()" class="bg-gradient-to-r from-gold-600 to-gold-400 text-emerald-950 font-bold px-4 py-1.5 rounded-xl text-xs shadow-md">
+                    Tutup
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- MODAL 2: DIGITAL TASBIH COUNTER -->
+    <div id="tasbihModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-emerald-950/85 backdrop-blur-md">
+        <div class="w-full max-w-sm glass-panel border border-gold-500/40 rounded-2xl p-6 relative flex flex-col items-center shadow-2xl">
+            <button onclick="toggleTasbihModal()" class="absolute top-4 right-4 w-7 h-7 rounded-full glass-btn text-gold-400 hover:text-white flex items-center justify-center text-xs">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            
+            <h3 class="font-header text-gold-gradient text-lg font-bold mb-1">Tasbih &amp; Dzikir Digital</h3>
+            <p class="text-xs text-gold-300/70 mb-3 text-center">Pengingat Ketenangan Hati &amp; Lisan</p>
+            
+            <div class="w-36 h-36 rounded-full border-4 border-gold-500/40 flex flex-col items-center justify-center bg-emerald-900/90 shadow-inner my-2 cursor-pointer active:scale-95 transition" onclick="incrementTasbih()">
+                <span id="tasbihCountDisplay" class="font-mono text-4xl font-extrabold text-gold-gradient">0</span>
+                <span class="text-[10px] text-gold-300/75 uppercase tracking-widest mt-1">Ketuk untuk Dzikir</span>
+            </div>
+
+            <p id="tasbihPresetName" class="text-xs font-serif italic text-gold-200 text-center mt-3 px-2">"Hasbunallah wa ni'mal wakil"</p>
+
+            <div class="flex items-center justify-between w-full mt-5 pt-3 border-t border-gold-500/20">
+                <button onclick="resetTasbih()" class="text-xs text-red-400/80 hover:text-red-300 flex items-center space-x-1">
+                    <i class="fa-solid fa-rotate-right"></i>
+                    <span>Reset</span>
+                </button>
+                <button onclick="changeTasbihPreset()" class="glass-btn px-3 py-1 rounded-full text-xs text-gold-300">
+                    Ganti Lafaz
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- MODAL 3: CATATAN RENUNGAN PRIBADI -->
+    <div id="reflectionModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-emerald-950/85 backdrop-blur-md">
+        <div class="w-full max-w-lg glass-panel border border-gold-500/40 rounded-2xl p-5 relative flex flex-col shadow-2xl">
+            <button onclick="closeReflectionModal()" class="absolute top-4 right-4 w-7 h-7 rounded-full glass-btn text-gold-400 hover:text-white flex items-center justify-center text-xs">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="flex items-center space-x-3 mb-3">
+                <i class="fa-solid fa-journal-whills text-gold-400 text-xl"></i>
+                <div>
+                    <h3 class="font-header text-gold-gradient text-base font-bold">Jurnal Perbaikan Diri</h3>
+                    <p id="reflectionSlideTitle" class="text-xs text-gold-300/70">Catat komitmen pribadi Anda</p>
+                </div>
+            </div>
+
+            <textarea id="reflectionInput" rows="4" class="w-full bg-emerald-950/70 border border-gold-500/30 rounded-xl p-3 text-xs sm:text-sm text-cream placeholder-gold-300/40 focus:outline-none focus:border-gold-400 no-scrollbar mb-3" placeholder="Tuliskan komitmen atau doa perbaikan pribadi Anda di sini..."></textarea>
+
+            <div class="flex items-center justify-between">
+                <span id="saveStatusMsg" class="text-xs text-emerald-400 hidden"><i class="fa-solid fa-check mr-1"></i> Catatan Tersimpan!</span>
+                <div class="flex space-x-2 ml-auto">
+                    <button onclick="closeReflectionModal()" class="glass-btn px-3.5 py-1.5 rounded-xl text-xs text-gold-300">Batal</button>
+                    <button onclick="saveReflectionNote()" class="bg-gradient-to-r from-gold-600 to-gold-400 text-emerald-950 font-bold px-4 py-1.5 rounded-xl text-xs shadow-md">Simpan Catatan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="fixed bottom-14 left-1/2 transform -translate-x-1/2 z-50 hidden bg-gold-500 text-emerald-950 font-semibold px-4 py-2 rounded-full text-xs shadow-xl flex items-center space-x-2 border border-gold-300">
+        <i class="fa-solid fa-circle-info"></i>
+        <span id="toastMsg">Pesan Toast</span>
+    </div>
+
+
+    <!-- JAVASCRIPT APP LOGIC & FULL SLIDE DATA -->
+    <script>
+        /* FULL 11 SLIDES NARRATIVE DATA */
+        const slidesData = [
+            {
+                id: 1,
+                tag: "SLIDE 1 - COVER",
+                title: "TENANG + 3S: Solusi Kebangsaan & Keluarga",
+                quote: "Solusi Ketika Negeri & Keluarga Diuji Badai",
+                dalilTitle: "Prinsip Utama Sikap Mukmin",
+                dalilText: "\"Allah tidak menilai kita dari seberapa keras kita berteriak. Allah menilai kita dari seberapa tenang kita bersikap saat diuji.\"",
+                points: [
+                    "<strong>Sakit yang sama:</strong> Ujian di negeri (pemimpin/hoaks) cerminan ujian di rumah (ekonomi/gadget/emosi).",
+                    "<strong>Badai bersama:</strong> Indonesia & keluarga sedang badai. Jangan jadi penumpang yang panik.",
+                    "<strong>Nahkoda yang tenang:</strong> Hadapi ujian dengan rumus <strong>TENANG + 3S</strong> (Sedekah, Sujud, Semangat)."
+                ],
+                scriptText: `Assalamu'alaikum warahmatullahi wabarakatuh.
+Jamaah yang dirahmati Allah.
+
+Hari ini kita tidak akan membahas siapa yang salah. Kita akan membahas apa yang harus kita lakukan ketika negeri diuji.
+
+Karena kalau kita jujur, yang sedang tidak baik-baik saja itu bukan hanya negeri. Yang sedang tidak baik-baik saja itu juga keluarga kita.
+
+Di negeri, kita ribut soal pemimpin. Di rumah, kita ribut soal uang belanja. Di negeri, kita ribut soal hoaks. Di rumah, kita ribut karena HP tidak lepas dari tangan.
+
+Ternyata, sakitnya negeri itu sama dengan sakitnya keluarga kita. Sama-sama karena hati yang jauh dari Allah.
+
+Allah tidak menilai kita dari seberapa keras kita berteriak. Allah menilai kita dari seberapa tenang kita bersikap saat diuji.
+
+Ibarat kapal yang kena badai. Penumpang yang panik akan membuat kapal semakin oleng. Tapi nahkoda yang tenang akan membawa kapal itu sampai ke pelabuhan.
+
+Hari ini, Indonesia sedang badai. Keluarga kita juga sedang badai. Jangan jadi penumpang yang panik. Jadilah nahkoda yang tenang.
+
+Dan rumus tenangnya adalah: TENANG + 3S.
+Mari kita mulai dari yang pertama.`,
+                svg: `<svg viewBox="0 0 300 200" class="w-full h-full">
+                    <circle cx="150" cy="100" r="75" fill="rgba(212,175,55,0.05)" stroke="#D4AF37" stroke-width="1" stroke-dasharray="4,4"/>
+                    <circle cx="150" cy="95" r="35" fill="none" stroke="#F3E5AB" stroke-width="2.5"/>
+                    <circle cx="150" cy="95" r="8" fill="#D4AF37"/>
+                    <line x1="150" y1="60" x2="150" y2="130" stroke="#D4AF37" stroke-width="2"/>
+                    <line x1="115" y1="95" x2="185" y2="95" stroke="#D4AF37" stroke-width="2"/>
+                    <line x1="125" y1="70" x2="175" y2="120" stroke="#E5C158" stroke-width="1.5"/>
+                    <line x1="175" y1="70" x2="125" y2="120" stroke="#E5C158" stroke-width="1.5"/>
+                    <path d="M40,155 Q80,140 120,155 T200,155 T280,155" fill="none" stroke="#E5C158" stroke-width="2"/>
+                    <path d="M20,168 Q70,155 120,168 T220,168 T290,168" fill="none" stroke="#D4AF37" stroke-width="1.5" opacity="0.6"/>
+                </svg>`
+            },
+            {
+                id: 2,
+                tag: "SLIDE 2 - TAUBAT DULU",
+                title: "Jangan Salahkan Hujan, Perbaiki Atapnya",
+                quote: "Perbaiki Atap Bocor Sebelum Menunjuk Ke Luar",
+                dalilTitle: "QS. Asy-Syura: 30",
+                dalilText: "\"Musibah apa pun yang menimpa kamu adalah disebabkan oleh perbuatan tanganmu sendiri.\"",
+                points: [
+                    "<strong>Sebab Musibah:</strong> Tidak ada musibah turun kecuali karena dosa, dan tidak diangkat kecuali dengan taubat.",
+                    "<strong>Analogi Atap Bocor:</strong> Hujan turun lalu kita marah pada hujan, padahal atap rumah/amalan kita sendiri yang bocor.",
+                    "<strong>Obat Pertama:</strong> Bukan pertengkaran atau teriakan, melainkan Istighfar & Taubat dulu."
+                ],
+                scriptText: `Sebelum kita menunjuk ke luar, mari kita bercermin ke dalam. Ke dalam negeri kita, dan ke dalam rumah kita.
+
+Allah berfirman dalam QS. Asy-Syura ayat 30:
+"Musibah apa pun yang menimpa kamu adalah disebabkan oleh perbuatan tanganmu sendiri."
+
+Ini ayat yang berat. Karena para ulama mengatakan, tidak ada musibah yang turun kecuali karena dosa. Dan tidak ada musibah yang diangkat kecuali dengan taubat.
+
+Bayangkan sebuah rumah yang atapnya bocor. Setiap hujan turun, air masuk. Lalu penghuninya marah-marah kepada hujan. Padahal yang bocor itu atapnya sendiri.
+
+Begitulah negeri ini. Kita marah kepada keadaan. Kita marah kepada pemimpin. Padahal atap kita yang bocor.
+
+Dan begitulah keluarga kita. Kita marah kepada suami yang tidak peka. Kita marah kepada istri yang boros. Kita marah kepada anak yang susah diatur. Padahal atap kita yang bocor. Shalat subuh kita yang bolong. Kejujuran kita yang retak.
+
+Maka jangan salahkan hujan dulu. Perbaiki atap dulu.
+
+Obat pertama negeri ini bukan teriakan. Obat pertama keluarga ini bukan pertengkaran. Obatnya adalah istighfar. Taubat dulu, baru Allah perbaiki negeri kita dan keluarga kita.`,
+                svg: `<svg viewBox="0 0 300 200" class="w-full h-full">
+                    <path d="M60,45 Q75,30 95,40 Q115,25 140,35 Q160,20 185,40 Q210,30 230,45" fill="none" stroke="#D4AF37" stroke-width="2" opacity="0.6"/>
+                    <g stroke="#E5C158" stroke-width="1.5" stroke-dasharray="3,4" opacity="0.7">
+                        <line x1="80" y1="55" x2="70" y2="95"/><line x1="120" y1="50" x2="110" y2="90"/>
+                        <line x1="160" y1="55" x2="150" y2="95"/><line x1="200" y1="50" x2="190" y2="90"/>
+                    </g>
+                    <path d="M75,130 L150,75 L225,130 M95,130 L95,175 L205,175 L205,130" fill="none" stroke="#F3E5AB" stroke-width="2.5"/>
+                    <path d="M145,78 L155,88 L148,100 L152,112" fill="none" stroke="#D4AF37" stroke-width="2"/>
+                    <circle cx="150" cy="125" r="2.5" fill="#E5C158"/><circle cx="150" cy="140" r="2" fill="#E5C158"/>
+                    <ellipse cx="150" cy="173" rx="20" ry="3.5" fill="none" stroke="#D4AF37" stroke-width="1.5"/>
+                </svg>`
+            },
+            {
+                id: 3,
+                tag: "SLIDE 3 - ELING ALLAH",
+                title: "Beritanya Sama, Hatinya Beda",
+                quote: "Dzikir Penenang Hati di Tengah Badai Informasi",
+                dalilTitle: "QS. Ar-Ra'd: 28 & Hadits Rasulullah",
+                dalilText: "\"Hanya dengan mengingat Allah, hati menjadi tenteram.\" & \"Orang yang berdzikir dan yang tidak seperti orang hidup dan mati.\"",
+                points: [
+                    "<strong>Berita vs Dzikir:</strong> Berita yang sama membuat orang tanpa dzikir panik, tapi orang berdzikir tenang.",
+                    "<strong>Keluarga Berzikir:</strong> Saat masalah datang, tidak langsung emosi/banting pintu, tetapi istighfar dan shalat dulu.",
+                    "<strong>Kunci Ketenangan:</strong> Yang memegang ketenanganmu bukan media atau pasanganmu, tapi Allah."
+                ],
+                scriptText: `Setelah kita bertaubat, bagaimana caranya agar hati tetap tenang di tengah badai berita dan badai rumah tangga?
+
+Allah sudah jawab dalam QS. Ar-Ra'd ayat 28:
+"Hanya dengan mengingat Allah, hati menjadi tenteram."
+
+Rasulullah bersabda:
+"Orang yang berdzikir dan yang tidak berdzikir itu seperti orang yang hidup dan orang yang mati."
+
+Ada dua orang yang membaca berita yang sama. Berita yang bikin panik.
+
+Orang pertama langsung share, langsung komentar marah, langsung debat di grup WhatsApp. Malamnya dia tidak bisa tidur. Dadanya sesak.
+
+Orang kedua, dia baca berita itu, lalu dia istighfar. Dia baca Hasbunallah wa ni'mal wakil. Dia bershalawat. Lalu dia tidur dengan tenang.
+
+Beritanya sama. Hatinya beda. Yang membedakan bukan beritanya, tapi dzikirnya.
+
+Dan ini juga terjadi di keluarga kita. Ada suami yang pulang kerja dengan masalah, langsung marah-marah ke istri. Ada istri yang dapat kabar buruk, langsung banting pintu.
+
+Tapi ada juga keluarga yang ketika ada masalah, mereka tidak langsung teriak. Mereka istighfar dulu. Mereka shalat dulu. Lalu mereka bicara dengan tenang.
+
+Maka jangan biarkan berita mengendalikan hatimu. Jangan biarkan masalah rumah tangga mengendalikan emosimu. Kendalikan hatimu dengan dzikir. Karena yang memegang ketenanganmu bukan media, bukan pasanganmu, tapi Allah.`,
+                svg: `<svg viewBox="0 0 300 200" class="w-full h-full">
+                    <circle cx="150" cy="100" r="60" fill="rgba(212,175,55,0.08)" stroke="#E5C158" stroke-width="1"/>
+                    <path d="M150,40 L160,55 L140,55 Z M140,55 L135,110 L165,110 L160,55 Z M140,110 L150,125 L160,110 Z" fill="none" stroke="#F3E5AB" stroke-width="2"/>
+                    <circle cx="150" cy="80" r="10" fill="#FFF8E7" opacity="0.6"/>
+                    <g stroke="#D4AF37" stroke-width="1.5">
+                        <line x1="120" y1="80" x2="105" y2="80"/><line x1="180" y1="80" x2="195" y2="80"/>
+                        <line x1="150" y1="50" x2="150" y2="35"/><line x1="150" y1="110" x2="150" y2="125"/>
+                    </g>
+                    <path d="M130,135 Q150,145 170,135" stroke="#E5C158" stroke-width="2" fill="none"/>
+                </svg>`
+            },
+            {
+                id: 4,
+                tag: "SLIDE 4 - NAHAN JARI & LISAN",
+                title: "Jadilah Pemadam, Bukan Penyiram Bensin",
+                quote: "Saring Sebelum Sharing, Jaga Kerahasiaan Rumah",
+                dalilTitle: "QS. Al-Hujurat: 6 & Hadits Nabi",
+                dalilText: "\"Jika datang kepadamu orang fasik membawa berita, periksalah dengan teliti.\" & \"Berkata baik atau diam.\"",
+                points: [
+                    "<strong>Api Hoaks & Gosip:</strong> Masalah kecil menjadi pembakar persaudaraan karena disiram bensin komentar/forward kita.",
+                    "<strong>Masalah Keluarga:</strong> Masalah suami istri cukup selesaikan berdua, jangan bawa masalah ranjang ke ruang tamu orang.",
+                    "<strong>Komitmen Lisan:</strong> Jadilah pemadam ketegangan. Jika tidak yakin, jangan share. Jika tidak baik, diam."
+                ],
+                scriptText: `Tidak semua yang kita tahu harus kita sebarkan. Baik di negeri, maupun di keluarga.
+
+Allah berfirman dalam QS. Al-Hujurat ayat 6:
+"Jika datang kepadamu orang fasik membawa suatu berita, maka periksalah dengan teliti."
+
+Dan Nabi bersabda:
+"Berkata baik atau diam."
+
+Suatu hari, ada api kecil di sebuah hutan. Api itu sebenarnya bisa padam sendiri. Tapi datang seseorang membawa bensin, lalu menyiramkannya. Api itu pun membesar dan membakar satu hutan.
+
+Begitulah hoaks. Hoaks itu seperti api kecil. Yang membuatnya besar adalah bensin dari jari kita. Satu tombol forward dari kita bisa membakar persaudaraan satu negeri.
+
+Dan begitulah gosip di keluarga. Ada masalah kecil antara suami dan istri. Sebenarnya bisa selesai dengan bicara berdua. Tapi diceritakan ke mertua, diceritakan ke tetangga, diceritakan ke grup keluarga. Akhirnya masalah kecil itu membesar dan membakar satu keluarga.
+
+Kita merasa hanya share. Kita merasa hanya curhat. Padahal di sisi Allah, kita sedang menyiram bensin.
+
+Maka mulai hari ini, jadilah pemadam, bukan penyiram bensin. Di negeri, kalau tidak yakin, jangan share. Di keluarga, kalau tidak baik, diam. Jangan bawa masalah ranjang ke ruang tamu orang lain.`,
+                svg: `<svg viewBox="0 0 300 200" class="w-full h-full">
+                    <path d="M80,65 L115,45 L130,65 L105,85 Z M90,75 L65,115 L100,135 L125,95 Z" fill="none" stroke="#D4AF37" stroke-width="2"/>
+                    <path d="M65,120 Q60,140 62,160" stroke="#E5C158" stroke-width="2.5" stroke-dasharray="4,3" fill="none"/>
+                    <path d="M210,50 C180,50 160,85 210,125 C260,85 240,50 210,50 Z" stroke="#F3E5AB" stroke-width="2" fill="none"/>
+                    <path d="M210,75 L210,105 M195,90 L225,90" stroke="#D4AF37" stroke-width="2"/>
+                </svg>`
+            },
+            {
+                id: 5,
+                tag: "SLIDE 5 - AKUR, JAGA UKHUWAH",
+                title: "Kita Satu Tubuh, Bukan Dua Kubu",
+                quote: "Obati Saudara & Pasangan, Jangan Dilukai",
+                dalilTitle: "QS. Al-Hujurat: 10 & Hadits Umat",
+                dalilText: "\"Sesungguhnya orang-orang mukmin itu bersaudara.\" & \"Mukmin seperti satu tubuh, jika satu anggota sakit seluruh tubuh demam.\"",
+                points: [
+                    "<strong>Beda Pilihan Boleh:</strong> Musuhan jangan! Persaudaraan kebangsaan dan rumah tangga jauh lebih berharga.",
+                    "<strong>Empati Satu Tubuh:</strong> Tangan kiri yang terluka dibersihkan oleh tangan kanan, bukan diejek.",
+                    "<strong>Obati Bukan Lukai:</strong> Saat suami/istri/anak salah, obati dengan nasihat lembut, bukan makian yang meretakkan rumah."
+                ],
+                scriptText: `Beda pilihan boleh. Musuhan jangan. Baik di negeri, maupun di rumah.
+
+Allah berfirman:
+"Sesungguhnya orang-orang mukmin itu bersaudara." (QS. Al-Hujurat: 10)
+
+Dan Nabi menggambarkan kita seperti satu tubuh. Jika satu anggota sakit, seluruh tubuh ikut demam.
+
+Bayangkan tangan kanan kita terluka. Apakah tangan kiri kita akan berkata, "Rasain! Salah sendiri!"? Tidak.
+
+Tangan kiri justru akan mengambil obat, membersihkan lukanya. Karena tangan kiri tahu, kalau tangan kanan sakit, seluruh tubuh ikut sakit.
+
+Begitulah seharusnya kita di negeri ini. Ketika saudara kita beda pendapat, jangan kita lukai lagi. Obati dia dengan nasihat yang lembut.
+
+Dan begitulah seharusnya kita di keluarga. Ketika suami salah, istri jangan menghakimi. Ketika istri salah, suami jangan membentak. Ketika anak salah, orang tua jangan memaki. Obati, bukan lukai.
+
+Karena kalau umat ini saling melukai, yang sakit bukan hanya dia, tapi kita semua. Kalau keluarga ini saling melukai, yang sakit bukan hanya dia, tapi anak-anak kita yang melihat.
+
+Jangan jadi kompor. Jadilah penyejuk. Karena kita ini satu tubuh, bukan dua kubu yang saling membunuh. Dan keluarga kita itu satu tubuh, bukan dua kubu yang saling menjatuhkan.`,
+                svg: `<svg viewBox="0 0 300 200" class="w-full h-full">
+                    <path d="M60,135 C90,105 110,95 135,110 C150,120 165,110 185,90 C205,70 235,60 255,75" fill="none" stroke="#F3E5AB" stroke-width="2.5"/>
+                    <path d="M130,70 C140,55 160,55 170,70 L150,120 C140,125 125,110 130,70 Z" fill="none" stroke="#D4AF37" stroke-width="2"/>
+                    <rect x="135" y="95" width="22" height="14" rx="3" fill="none" stroke="#E5C158" stroke-width="1.5" transform="rotate(-15 135 95)"/>
+                    <path d="M150,40 C140,25 115,30 125,50 C135,65 150,80 150,80 C150,80 165,65 175,50 C185,30 160,25 150,40 Z" fill="rgba(212, 175, 55, 0.15)" stroke="#D4AF37" stroke-width="1.5"/>
+                </svg>`
+            },
+            {
+                id: 6,
+                tag: "SLIDE 6 - NATA DIRI",
+                title: "Ingin Air Jernih? Berhenti Mengaduk Lumpurnya",
+                quote: "Perubahan Negeri & Rumah Berawal dari Diri Sendiri",
+                dalilTitle: "QS. Ar-Ra'd: 11 & QS. Al-Baqarah: 153",
+                dalilText: "\"Allah tidak mengubah keadaan suatu kaum sampai mereka mengubah diri sendiri.\" & \"Mohon pertolongan dengan sabar & shalat.\"",
+                points: [
+                    "<strong>Jujur Pada Diri:</strong> Menuntut pemimpin/pasangan sempurna, tapi lupa memperbaiki kualitas shalat & kejujuran diri.",
+                    "<strong>Analogi Air Lumpur:</strong> Ingin air jernih tapi terus mengaduk lumpur di gelas. Bagaimana bisa jernih?",
+                    "<strong>Mulai Dari Subuh:</strong> Perbaiki diri dulu dari shalat subuh dan kejujuran, Allah akan ubah negeri & keluarga kita."
+                ],
+                scriptText: `Perbaiki negeri itu dimulai dari memperbaiki diri sendiri. Dan perbaiki keluarga itu juga dimulai dari memperbaiki diri sendiri.
+
+Allah berfirman:
+"Allah tidak akan mengubah keadaan suatu kaum, sampai mereka mengubah keadaan yang ada pada diri mereka sendiri." (QS. Ar-Ra'd: 11)
+
+Dan Allah juga berfirman:
+"Mohonlah pertolongan dengan sabar dan shalat." (QS. Al-Baqarah: 153)
+
+Kita semua ingin pemimpin yang jujur. Tapi coba jujur pada diri sendiri. Ketika kita dagang, apakah timbangan kita jujur? Ketika kita kerja, apakah kita korupsi waktu? Ketika shalat subuh, apakah kita masih kesiangan?
+
+Kita juga ingin pasangan yang sempurna. Suami ingin istri yang sabar. Istri ingin suami yang perhatian. Tapi kita lupa, apakah kita sendiri sudah menjadi pasangan yang sabar dan perhatian?
+
+Kita menuntut Indonesia yang bersih, tapi kita sendiri masih kotor. Kita menuntut keluarga yang harmonis, tapi kita sendiri masih egois.
+
+Ibarat kita ingin air yang jernih, tapi kita terus mengaduk lumpur di dalam gelasnya. Bagaimana airnya bisa jernih?
+
+Maka jangan tuntut negeri berubah dulu. Jangan tuntut pasangan berubah dulu. Ubah diri kita dulu. Mulai dari shalat subuh kita. Mulai dari kejujuran kita. Kalau diri kita berubah, Allah yang akan mengubah negeri kita dan keluarga kita.`,
+                svg: `<svg viewBox="0 0 300 200" class="w-full h-full">
+                    <path d="M100,55 L115,165 Q150,175 185,165 L200,55 Z" fill="none" stroke="#F3E5AB" stroke-width="2.5"/>
+                    <ellipse cx="150" cy="75" rx="45" ry="8" fill="none" stroke="#D4AF37" stroke-width="1.5"/>
+                    <path d="M185,25 L155,125 Q145,140 135,135 Q130,125 145,110 L175,20 Z" fill="none" stroke="#E5C158" stroke-width="2"/>
+                    <path d="M120,145 Q135,130 150,150 Q165,160 180,140" fill="none" stroke="#AA8827" stroke-width="2" stroke-dasharray="4,2"/>
+                    <circle cx="150" cy="40" r="4" fill="#FFF8E7"/>
+                </svg>`
+            },
+            {
+                id: 7,
+                tag: "SLIDE 7 - GAUNGKAN KEBENARAN DENGAN HIKMAH",
+                title: "Menang Hidayah, Bukan Menang Debat",
+                quote: "Menyampaikan Kebenaran Dengan Kelembutan Hati",
+                dalilTitle: "HR. Abu Dawud",
+                dalilText: "\"Sebaik-baik jihad adalah menyampaikan kalimat benar di hadapan penguasa yang zalim.\"",
+                points: [
+                    "<strong>Bukan Berarti Diam:</strong> Islam tidak menyuruh diam pada kezaliman, tapi perhatikan cara menyampaikannya.",
+                    "<strong>Membangunkan Orang Tidur:</strong> Disiram air es membuat bangun dengan dendam. Ditepuk lembut membuat bangun dengan senyum.",
+                    "<strong>Tujuan Utama:</strong> Nasihat kebenaran pada pemimpin, pasangan & anak tujuannya menang hidayah, bukan menang debat."
+                ],
+                scriptText: `Islam tidak menyuruh kita diam terhadap kezaliman. Baik kezaliman di negeri, maupun kesalahan di keluarga.
+
+Rasulullah bersabda:
+"Sebaik-baik jihad adalah menyampaikan kalimat benar di hadapan penguasa yang zalim." (HR. Abu Dawud)
+
+Tapi perhatikan caranya.
+
+Ada dua cara membangunkan orang yang tidur.
+Cara pertama, disiram air es, diteriaki, dibentak. Orang itu bangun, tapi bangun dengan marah dan dendam.
+Cara kedua, dibangunkan dengan lembut, ditepuk pelan, dipanggil namanya dengan sayang. Orang itu bangun dengan senyum.
+
+Begitulah nasihat. Kalau kita menyampaikan kebenaran dengan caci maki dan anarkis, yang bangun bukan keadilan, tapi kebencian.
+
+Dan ini juga terjadi di keluarga. Kalau suami menasihati istri dengan bentakan, yang bangun bukan kesadaran, tapi dendam. Kalau orang tua menasihati anak dengan makian, yang bangun bukan hormat, tapi takut.
+
+Tapi kalau kita menyampaikan dengan hikmah dan doa, yang bangun adalah hidayah.
+
+Jadi, jangan diam terhadap kebatilan. Tapi jangan juga kasar dalam menyampaikan kebenaran. Baik kepada pemimpin negeri, maupun kepada pasangan dan anak kita. Karena tujuan kita bukan menang debat, tapi menang hidayah.`,
+                svg: `<svg viewBox="0 0 300 200" class="w-full h-full">
+                    <circle cx="150" cy="130" r="40" fill="rgba(212,175,55,0.15)" stroke="#D4AF37" stroke-width="1.5"/>
+                    <path d="M100,130 Q150,80 200,130" fill="none" stroke="#F3E5AB" stroke-width="2"/>
+                    <path d="M110,135 Q150,120 190,135 L190,165 Q150,150 110,165 Z" fill="none" stroke="#E5C158" stroke-width="2"/>
+                    <line x1="150" y1="125" x2="150" y2="160" stroke="#D4AF37" stroke-width="1.5"/>
+                    <line x1="150" y1="70" x2="150" y2="50" stroke="#FFF8E7" stroke-width="2"/>
+                    <line x1="110" y1="90" x2="95" y2="75" stroke="#E5C158" stroke-width="1.5"/>
+                    <line x1="190" y1="90" x2="205" y2="75" stroke="#E5C158" stroke-width="1.5"/>
+                </svg>`
+            },
+            {
+                id: 8,
+                tag: "SLIDE 8 - SUJUD, DOAKAN PEMIMPIN",
+                title: "Doa Dalam Sujud Lebih Tajam Dari Status Sosmed",
+                quote: "Ketajaman Doa Sepertiga Malam Untuk Umat & Rumah",
+                dalilTitle: "Wasiat Ulama (Fudhail bin Iyadh)",
+                dalilText: "\"Kalau aku punya satu doa yang mustajab, akan aku berikan untuk pemimpin. Karena kalau pemimpin baik, negeri jadi baik.\"",
+                points: [
+                    "<strong>Dua Respon Anak Nakal:</strong> Dimaki setiap hari semakin nakal. Didoakan ortu dalam sujud menangis, anak berubah ajaib.",
+                    "<strong>Stop Caci Maki:</strong> Caci maki di medsos/depan mertua tidak merubah keadaan. Doa sujud yang melembutkan hati.",
+                    "<strong>Amalan Malam:</strong> Bawa nama pemimpin, pasangan, dan anak-anakmu dalam sujud malam."
+                ],
+                scriptText: `Jangan hanya maki pemimpin di media sosial. Doakan dia dalam sujudmu. Dan jangan hanya maki pasanganmu di depan orang lain. Doakan dia dalam sujudmu.
+
+Ini adalah sunnah yang paling berat diamalkan hari ini.
+
+Fudhail bin Iyadh, ulama besar, berkata: "Kalau aku punya satu doa yang mustajab, akan aku berikan untuk pemimpin. Karena kalau pemimpin baik, negeri jadi baik."
+
+Bayangkan seorang anak yang nakal. Setiap hari orang tuanya hanya memaki, "Dasar anak nakal! Dasar anak bodoh!"
+Apakah anak itu akan berubah jadi baik? Tidak. Dia akan semakin nakal.
+
+Tapi ada orang tua yang setiap malam menangis dalam sujudnya, "Ya Allah, lembutkan hati anakku." Dan ajaib, anak itu berubah.
+
+Begitulah pemimpin kita. Maki-makian kita di media sosial tidak akan mengubah mereka. Yang mengubah mereka adalah doa kita dalam sujud.
+
+Dan begitulah pasangan kita. Maki-makian kita di depan mertua tidak akan mengubah dia. Yang mengubah dia adalah doa kita dalam sujud.
+
+Maka mulai malam ini, bawa nama pemimpin kita dalam sujud. Bawa nama pasangan kita dalam sujud. Bawa nama anak-anak kita dalam sujud. Karena doa dalam sujud itu lebih tajam daripada status di media sosial dan lebih tajam daripada keluhan di grup keluarga.`,
+                svg: `<svg viewBox="0 0 300 200" class="w-full h-full">
+                    <rect x="40" y="30" width="45" height="65" rx="4" fill="none" stroke="#D4AF37" stroke-width="1.5"/>
+                    <line x1="62" y1="30" x2="62" y2="95" stroke="#D4AF37" stroke-width="1"/>
+                    <line x1="40" y1="62" x2="85" y2="62" stroke="#D4AF37" stroke-width="1"/>
+                    <path d="M50,42 A8,8 0 0,0 60,54 A8,8 0 0,1 50,42 Z" fill="#F3E5AB"/>
+                    <line x1="100" y1="160" x2="260" y2="160" stroke="#D4AF37" stroke-width="2.5"/>
+                    <path d="M125,158 C140,158 150,140 155,125 C170,105 195,105 210,130 C215,140 220,158 235,158" fill="none" stroke="#F3E5AB" stroke-width="2.5"/>
+                    <circle cx="118" cy="150" r="8" fill="none" stroke="#F3E5AB" stroke-width="2"/>
+                </svg>`
+            },
+            {
+                id: 9,
+                tag: "SLIDE 9 - SEDEKAH, TOLAK BALA",
+                title: "Sedekah Itu Menanam, Bukan Membuang",
+                quote: "Melipatgandakan Keberkahan & Menolak Bala",
+                dalilTitle: "QS. Al-Baqarah: 261 & Hadits Nabi",
+                dalilText: "\"Sedekah itu menolak bala.\" & \"Perumpamaan sedekah seperti biji menumbuhkan 7 tangkai, tiap tangkai 100 biji.\"",
+                points: [
+                    "<strong>Analogi Benih Petani:</strong> Dimakan habis kenyang sehari. Ditanam di ladang Allah, panen melimpah.",
+                    "<strong>Sedekah Harta & Sikap:</strong> Sedekah bukan cuma uang. Senyum, bantu cuci piring, dengarkan pasangan & peluk anak adalah sedekah.",
+                    "<strong>Saat Ekonomi Berat:</strong> Justru saat itulah kita harus menanam kebaikan untuk menyelamatkan masa depan."
+                ],
+                scriptText: `Makin sempit rezeki, makin lebarin sedekah. Baik untuk negeri, maupun untuk keluarga.
+
+Rasulullah bersabda: "Sedekah itu menolak bala."
+
+Dan Allah berfirman:
+"Perumpamaan orang yang bersedekah itu seperti sebutir biji yang menumbuhkan tujuh tangkai, setiap tangkai ada seratus biji." (QS. Al-Baqarah: 261)
+
+Ada seorang petani yang punya satu karung benih. Dia lapar. Ada dua pilihan. Dimakan habis, atau ditanam sebagian.
+Kalau dimakan habis, hari ini dia kenyang, besok dia lapar lagi.
+Tapi kalau dia tanam, hari ini dia lapar sedikit, tapi tiga bulan lagi dia panen satu ladang.
+
+Begitulah sedekah. Sedekah itu bukan membuang uang. Sedekah itu menanam uang di ladang Allah. Dan Allah tidak pernah ingkar janji dalam panen.
+
+Dan di keluarga, sedekah itu bukan hanya uang. Senyum itu sedekah. Membantu istri cuci piring itu sedekah. Mendengarkan suami bercerita itu sedekah. Memeluk anak itu sedekah.
+
+Jadi, ketika ekonomi berat, jangan pelit. Jangan pelit harta untuk negeri, jangan pelit senyum untuk keluarga. Justru saat itulah kita harus menanam. Karena yang kita tanam hari ini, itulah yang akan menyelamatkan negeri kita dan keluarga kita besok.`,
+                svg: `<svg viewBox="0 0 300 200" class="w-full h-full">
+                    <line x1="40" y1="150" x2="260" y2="150" stroke="#D4AF37" stroke-width="2"/>
+                    <g stroke="#E5C158" stroke-width="2" fill="none">
+                        <path d="M150,150 Q150,100 140,80 M150,120 Q165,105 160,90"/>
+                        <path d="M190,150 Q190,90 180,75 M190,115 Q205,100 200,85"/>
+                        <path d="M110,150 Q110,110 100,95 M110,125 Q125,115 120,100"/>
+                    </g>
+                    <circle cx="140" cy="70" r="3" fill="#FFF8E7"/><circle cx="180" cy="65" r="3" fill="#FFF8E7"/><circle cx="100" cy="85" r="3" fill="#FFF8E7"/>
+                </svg>`
+            },
+            {
+                id: 10,
+                tag: "SLIDE 10 - SEMANGAT, JANGAN PUTUS ASA",
+                title: "Selama Allah Masih Ada, Harapan Masih Ada",
+                quote: "Mukmin Pantang Berputus Asa Atas Rahmat Allah",
+                dalilTitle: "QS. Yusuf: 87",
+                dalilText: "\"Janganlah kamu berputus asa dari rahmat Allah.\"",
+                points: [
+                    "<strong>Sejarah Ketangguhan:</strong> Tahun 1945 & pandemi kita lewati karena tawakal dan semangat pantang menyerah.",
+                    "<strong>Rahmat Allah Tetap Ada:</strong> Allah yang memperbaiki negeri yang hancur, Dia juga yang sanggup memperbaiki rumah tangga retak.",
+                    "<strong>Kalimat Kunci:</strong> Ucapkan <em>Hasbunallah wa ni'mal wakil</em>. Selama Allah ada, harapan selalu ada."
+                ],
+                scriptText: `Dan yang terakhir. Mukmin itu pantang putus asa. Baik terhadap negerinya, maupun terhadap keluarganya.
+
+Allah berfirman:
+"Janganlah kamu berputus asa dari rahmat Allah." (QS. Yusuf: 87)
+
+Ingat tahun 1945. Negeri ini baru merdeka, tidak punya apa-apa. Tidak punya senjata, tidak punya uang. Tapi para pendahulu kita tidak putus asa. Mereka bilang, "Kita bisa."
+
+Ingat pandemi. Semua orang takut. Ekonomi jatuh. Tapi kita lewat.
+
+Lalu kenapa hari ini kita bilang, "Indonesia sudah tidak ada harapan"? Padahal rahmat Allah hari ini sama besarnya dengan rahmat Allah dulu.
+
+Dan kenapa hari ini kita bilang, "Rumah tangga saya sudah tidak bisa diperbaiki"? Padahal Allah yang memperbaiki negeri yang hancur, Dia juga yang bisa memperbaiki rumah tangga yang retak.
+
+Maka jangan bilang Indonesia sudah habis. Jangan bilang keluarga saya sudah habis. Bilanglah, "Hasbunallah wa ni'mal wakil." Cukuplah Allah penolong kami. Karena selama Allah masih ada, harapan itu masih ada. Untuk negeri kita, dan untuk keluarga kita.`,
+                svg: `<svg viewBox="0 0 300 200" class="w-full h-full">
+                    <circle cx="210" cy="125" r="28" fill="none" stroke="#E5C158" stroke-width="2"/>
+                    <g stroke="#D4AF37" stroke-width="1.5">
+                        <line x1="210" y1="90" x2="210" y2="75"/><line x1="180" y1="100" x2="168" y2="90"/>
+                        <line x1="240" y1="100" x2="252" y2="90"/><line x1="160" y1="125" x2="145" y2="125"/>
+                    </g>
+                    <line x1="85" y1="35" x2="85" y2="175" stroke="#F3E5AB" stroke-width="3.5" stroke-linecap="round"/>
+                    <path d="M85,40 Q120,30 145,50 T205,45 L205,105 Q160,110 145,90 T85,100 Z" fill="none" stroke="#D4AF37" stroke-width="2"/>
+                    <path d="M85,70 Q120,60 145,80 T205,75" fill="none" stroke="#E5C158" stroke-width="1.5"/>
+                </svg>`
+            },
+            {
+                id: 11,
+                tag: "SLIDE 11 - PENUTUP",
+                title: "Negeri Ini Diperbaiki Oleh Yang Paling Bertakwa",
+                quote: "Mulai dari Diri Kita, Sajadah Kita, Mulai Hari Ini",
+                dalilTitle: "Komitmen Perubahan Kebangsaan & Keluarga",
+                dalilText: "\"Negeri & keluarga ini tidak diperbaiki oleh yang paling keras suaranya, tapi oleh yang paling lembut hatinya & paling bertakwa.\"",
+                points: [
+                    "<strong>Amal Bukan Sekadar Tepuk Tangan:</strong> Sejarah mencatat perbaikan dari orang yang sujudnya panjang & sedekahnya banyak.",
+                    "<strong>Rumah Tangga Bahagia:</strong> Dibangun suami bertaubat, istri berdzikir, dan orang tua mendoakan anak dalam sujud.",
+                    "<strong>Langkah Pertama:</strong> Mulai dari diri kita. Mulai dari sajadah kita. Mulai dari keluarga kita. Mulai dari hari ini."
+                ],
+                scriptText: `Jamaah yang dirahmati Allah.
+
+Kita sudah tahu apa yang harus dilakukan. Kita sudah tahu alasannya dari Al-Qur'an. Kita sudah dengar contohnya, dari negeri sampai ke keluarga.
+
+Maka sekarang tinggal satu pertanyaan: Mau kita amalkan atau hanya kita tepuk tangani?
+
+Karena sejarah tidak pernah mencatat negeri yang berubah karena caci maki. Sejarah hanya mencatat negeri yang berubah karena orang-orang yang sujudnya panjang, sedekahnya banyak, dan akhlaknya indah.
+
+Dan sejarah juga tidak pernah mencatat keluarga yang bahagia karena saling menyalahkan. Keluarga yang bahagia itu dibangun oleh suami yang mau bertaubat, istri yang mau berdzikir, dan orang tua yang mau mendoakan anaknya dalam sujud.
+
+Karena negeri ini tidak akan diperbaiki oleh orang yang paling marah.
+
+Negeri ini hanya akan diperbaiki oleh orang yang paling bertakwa. Dan keluarga ini juga tidak akan diperbaiki oleh yang paling keras suaranya, tapi oleh yang paling lembut hatinya.
+
+Mari mulai dari diri kita. Mulai dari sajadah kita. Mulai dari keluarga kita. Mulai dari hari ini.
+
+Semoga Allah menjaga Indonesia dan menjaga keluarga kita menjadi keluarga yang aman, adil, dan diberkahi. Aamiin ya Rabbal 'alamin.
+
+Wassalamu'alaikum warahmatullahi wabarakatuh.`,
+                svg: `<svg viewBox="0 0 300 200" class="w-full h-full">
+                    <path d="M120,135 Q150,75 180,135 Z" fill="rgba(212,175,55,0.2)" stroke="#D4AF37" stroke-width="2"/>
+                    <path d="M150,75 L150,62" stroke="#E5C158" stroke-width="2"/>
+                    <path d="M147,56 A5,5 0 0,0 153,62 A5,5 0 0,1 147,56 Z" fill="#FFF8E7"/>
+                    <path d="M80,145 Q100,105 120,145 Z" fill="rgba(212,175,55,0.15)" stroke="#E5C158" stroke-width="1.5"/>
+                    <path d="M180,145 Q200,105 220,145 Z" fill="rgba(212,175,55,0.15)" stroke="#E5C158" stroke-width="1.5"/>
+                    <rect x="55" y="85" width="12" height="65" stroke="#D4AF37" stroke-width="1.5" fill="none"/>
+                    <rect x="233" y="85" width="12" height="65" stroke="#D4AF37" stroke-width="1.5" fill="none"/>
+                    <line x1="30" y1="150" x2="270" y2="150" stroke="#F3E5AB" stroke-width="2.5"/>
+                </svg>`
+            }
+        ];
+
+        /* STATE VARIABLES */
+        let currentSlideIndex = 0;
+        let isGridView = false;
+        let isAudioEnabled = true;
+        let isAudioPlaying = false;
+        let deferredPrompt = null;
+        let tasbihCount = parseInt(localStorage.getItem('tenang_tasbih_count') || '0');
+        let currentPresetIndex = 0;
+
+        const tasbihPresets = [
+            "Hasbunallah wa ni'mal wakil",
+            "Subhanallah walhamdulillah wala ilaha illallah wallahu akbar",
+            "Astaghfirullahal 'adzim wa atubu ilaih",
+            "Allahumma sholli 'ala Sayyidina Muhammad"
+        ];
+
+        const audioPlayer = document.getElementById('slideAudioPlayer');
+
+        /* INITIALIZATION ON DOM READY */
+        window.addEventListener('DOMContentLoaded', () => {
+            renderSlide(currentSlideIndex);
+            buildDots();
+            buildGridCards();
+            updateTasbihDisplay();
+            initPWA();
+            setupTouchGestures();
+            setupKeyboardNav();
+            setupAudioEvents();
+        });
+
+        /* 1. HALAMAN PEMBUKA / SPLASH SCREEN ACTIONS */
+        function enterMainApp() {
+            document.getElementById('splashScreen').classList.add('hidden');
+            
+            // Try Fullscreen on Main Button Tap
+            requestAppFullscreen();
+
+            // Render Slide 1 and start slide 1.mp3 audio
+            currentSlideIndex = 0;
+            renderSlide(currentSlideIndex);
+            playCurrentSlideAudio();
+        }
+
+        function showSplashScreen() {
+            document.getElementById('splashScreen').classList.remove('hidden');
+            pauseSlideAudio();
+        }
+
+        /* 2. FULLSCREEN FUNCTIONALITY (ANDROID & IPHONE SAFE) */
+        function requestAppFullscreen() {
+            const docEl = document.documentElement;
+            if (docEl.requestFullscreen) {
+                docEl.requestFullscreen().catch(() => {});
+            } else if (docEl.webkitRequestFullscreen) {
+                docEl.webkitRequestFullscreen();
+            }
+        }
+
+        function toggleFullscreen() {
+            const isFull = document.fullscreenElement || document.webkitFullscreenElement;
+            const icon = document.getElementById('fullscreenIcon');
+
+            if (!isFull) {
+                requestAppFullscreen();
+                if (icon) icon.className = 'fa-solid fa-compress text-xs sm:text-sm';
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen().catch(() => {});
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                }
+                if (icon) icon.className = 'fa-solid fa-expand text-xs sm:text-sm';
+            }
+        }
+
+        /* 3. AUDIO SYNCHRONIZATION LOGIC ("slide 1.mp3" ... "slide 11.mp3") */
+        function setupAudioEvents() {
+            // When slide audio finishes playing -> Automatically advance slide & play next audio
+            audioPlayer.addEventListener('ended', () => {
+                if (currentSlideIndex < slidesData.length - 1) {
+                    currentSlideIndex++;
+                    renderSlide(currentSlideIndex);
+                    playCurrentSlideAudio();
+                } else {
+                    updateAudioUI(false);
+                }
+            });
+
+            audioPlayer.addEventListener('play', () => {
+                isAudioPlaying = true;
+                updateAudioUI(true);
+            });
+
+            audioPlayer.addEventListener('pause', () => {
+                isAudioPlaying = false;
+                updateAudioUI(false);
+            });
+
+            audioPlayer.addEventListener('error', (e) => {
+                console.warn("Audio file missing or format unreadable:", audioPlayer.src);
+                updateAudioUI(false);
+            });
+        }
+
+        function playCurrentSlideAudio() {
+            if (!isAudioEnabled) return;
+            
+            const audioFileName = `slide ${currentSlideIndex + 1}.mp3`;
+            audioPlayer.src = audioFileName;
+            
+            audioPlayer.play().then(() => {
+                updateAudioUI(true);
+            }).catch(err => {
+                console.log("Audio play blocked by browser policy or file not found:", audioFileName);
+                updateAudioUI(false);
+            });
+        }
+
+        function pauseSlideAudio() {
+            if (audioPlayer) {
+                audioPlayer.pause();
+                updateAudioUI(false);
+            }
+        }
+
+        function toggleSlideAudio() {
+            if (isAudioPlaying) {
+                audioPlayer.pause();
+                isAudioEnabled = false;
+                showToast("Audio Slide Dihentikan");
+            } else {
+                isAudioEnabled = true;
+                if (audioPlayer.src && audioPlayer.src.includes(`slide%20${currentSlideIndex + 1}.mp3`)) {
+                    audioPlayer.play().catch(() => playCurrentSlideAudio());
+                } else {
+                    playCurrentSlideAudio();
+                }
+                showToast(`Memutar slide ${currentSlideIndex + 1}.mp3`);
+            }
+        }
+
+        function updateAudioUI(isPlaying) {
+            const icon = document.getElementById('slideSpeakerIcon');
+            const wave = document.getElementById('slideAudioWave');
+            const text = document.getElementById('slideSpeakerText');
+
+            if (isPlaying) {
+                if (icon) icon.className = 'fa-solid fa-volume-high text-gold-400';
+                if (wave) wave.classList.remove('hidden');
+                if (text) text.textContent = 'Memutar...';
+            } else {
+                if (icon) icon.className = 'fa-solid fa-volume-xmark text-gold-300/70';
+                if (wave) wave.classList.add('hidden');
+                if (text) text.textContent = 'Audio Slide';
+            }
+        }
+
+        /* RENDER SLIDE CONTENT */
+        function renderSlide(index) {
+            const data = slidesData[index];
+            const card = document.getElementById('slideCard');
+            
+            card.style.opacity = '0.15';
+            card.style.transform = 'scale(0.98)';
+
+            setTimeout(() => {
+                document.getElementById('slideTagText').textContent = data.tag;
+                document.getElementById('slideCounter').textContent = `${index + 1} / ${slidesData.length}`;
+                document.getElementById('slideQuote').textContent = `"${data.quote}"`;
+                document.getElementById('slideSvgContainer').innerHTML = data.svg;
+
+                // Dalil Box
+                document.getElementById('slideDalilTitle').textContent = data.dalilTitle;
+                document.getElementById('slideDalilText').textContent = data.dalilText;
+
+                // Points List
+                const pointsUl = document.getElementById('slidePointsList');
+                pointsUl.innerHTML = '';
+                data.points.forEach(point => {
+                    const li = document.createElement('li');
+                    li.className = 'flex items-start space-x-2';
+                    li.innerHTML = `<i class="fa-solid fa-caret-right text-gold-400 mt-1 text-xs"></i><span>${point}</span>`;
+                    pointsUl.appendChild(li);
+                });
+
+                updateDots(index);
+
+                card.style.opacity = '1';
+                card.style.transform = 'scale(1)';
+            }, 150);
+        }
+
+        /* NAVIGATION CONTROL WITH AUDIO SYNC */
+        function nextSlide() {
+            currentSlideIndex = (currentSlideIndex + 1) % slidesData.length;
+            renderSlide(currentSlideIndex);
+            playCurrentSlideAudio();
+        }
+
+        function prevSlide() {
+            currentSlideIndex = (currentSlideIndex - 1 + slidesData.length) % slidesData.length;
+            renderSlide(currentSlideIndex);
+            playCurrentSlideAudio();
+        }
+
+        function goToSlide(index) {
+            currentSlideIndex = index;
+            if (isGridView) {
+                toggleViewMode();
+            }
+            renderSlide(currentSlideIndex);
+            playCurrentSlideAudio();
+        }
+
+        /* DOTS INDICATOR */
+        function buildDots() {
+            const container = document.getElementById('dotsContainer');
+            container.innerHTML = '';
+            slidesData.forEach((_, idx) => {
+                const dot = document.createElement('button');
+                dot.className = `w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full transition-all duration-300 flex-shrink-0 ${idx === currentSlideIndex ? 'bg-gold-400 w-5 sm:w-7' : 'bg-gold-500/30 hover:bg-gold-500/60'}`;
+                dot.onclick = () => goToSlide(idx);
+                container.appendChild(dot);
+            });
+        }
+
+        function updateDots(activeIndex) {
+            const container = document.getElementById('dotsContainer');
+            Array.from(container.children).forEach((dot, idx) => {
+                if (idx === activeIndex) {
+                    dot.className = 'w-5 sm:w-7 h-2 sm:h-2.5 rounded-full bg-gold-400 transition-all duration-300 shadow-sm shadow-gold-400/50 flex-shrink-0';
+                } else {
+                    dot.className = 'w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-gold-500/30 hover:bg-gold-500/60 transition-all duration-300 flex-shrink-0';
+                }
+            });
+        }
+
+        /* DAFTAR ISI / GRID VIEW BUILDER */
+        function buildGridCards() {
+            const gridContainer = document.querySelector('#gridContainer > div');
+            gridContainer.innerHTML = '';
+
+            slidesData.forEach((slide, idx) => {
+                const card = document.createElement('div');
+                card.className = 'glass-panel border border-gold-500/30 rounded-2xl p-3.5 sm:p-4 flex flex-col justify-between hover:border-gold-400 transition cursor-pointer group shadow-lg';
+                card.onclick = () => goToSlide(idx);
+
+                card.innerHTML = `
+                    <div>
+                        <div class="flex items-center justify-between text-xs text-gold-400 font-header mb-1.5 pb-1.5 border-b border-gold-500/20">
+                            <span>${slide.tag}</span>
+                            <span class="text-gold-300/50">#${slide.id}</span>
+                        </div>
+                        <h3 class="font-quote text-sm sm:text-base text-gold-metallic font-bold mb-1.5 line-clamp-2">"${slide.quote}"</h3>
+                        <div class="h-20 flex items-center justify-center py-1 opacity-85 group-hover:opacity-100 transition">
+                            ${slide.svg}
+                        </div>
+                    </div>
+                    <div class="mt-2 pt-2 border-t border-gold-500/20 flex items-center justify-between text-xs text-gold-300/80">
+                        <span class="font-medium flex items-center space-x-1">
+                            <i class="fa-solid fa-circle-play text-gold-400 text-xs"></i>
+                            <span>Putar Slide</span>
+                        </span>
+                        <i class="fa-solid fa-arrow-right text-gold-400 group-hover:translate-x-1 transition"></i>
+                    </div>
+                `;
+                gridContainer.appendChild(card);
+            });
+        }
+
+        function toggleViewMode() {
+            isGridView = !isGridView;
+            const carousel = document.getElementById('carouselContainer');
+            const grid = document.getElementById('gridContainer');
+            const icon = document.getElementById('viewToggleIcon');
+
+            if (isGridView) {
+                carousel.classList.add('hidden');
+                grid.classList.remove('hidden');
+                icon.className = 'fa-solid fa-clone text-xs sm:text-sm';
+            } else {
+                grid.classList.add('hidden');
+                carousel.classList.remove('hidden');
+                icon.className = 'fa-solid fa-border-all text-xs sm:text-sm';
+            }
+        }
+
+        /* FULL SCRIPT READER MODAL */
+        function openFullScriptModal() {
+            const current = slidesData[currentSlideIndex];
+            document.getElementById('scriptModalSlideTag').textContent = current.tag;
+            document.getElementById('scriptModalTitle').textContent = `"${current.quote}"`;
+            document.getElementById('scriptModalBody').textContent = current.scriptText;
+            document.getElementById('scriptModal').classList.remove('hidden');
+        }
+
+        function closeFullScriptModal() {
+            document.getElementById('scriptModal').classList.add('hidden');
+        }
+
+        function copyCurrentScript() {
+            const current = slidesData[currentSlideIndex];
+            const content = `${current.tag}\n"${current.quote}"\n\nNaskah Narasi:\n${current.scriptText}`;
+
+            const dummy = document.createElement('textarea');
+            document.body.appendChild(dummy);
+            dummy.value = content;
+            dummy.select();
+            document.execCommand('copy');
+            document.body.removeChild(dummy);
+            showToast("Naskah Narasi disalin ke Clipboard!");
+        }
+
+        /* TOUCH & SWIPE GESTURES */
+        function setupTouchGestures() {
+            const card = document.getElementById('slideCard');
+            let startX = 0;
+            let endX = 0;
+
+            card.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+            }, { passive: true });
+
+            card.addEventListener('touchend', (e) => {
+                endX = e.changedTouches[0].clientX;
+                handleSwipe();
+            }, { passive: true });
+
+            function handleSwipe() {
+                const diff = startX - endX;
+                if (Math.abs(diff) > 45) {
+                    if (diff > 0) {
+                        nextSlide();
+                    } else {
+                        prevSlide();
+                    }
+                }
+            }
+        }
+
+        /* KEYBOARD NAVIGATION */
+        function setupKeyboardNav() {
+            document.addEventListener('keydown', (e) => {
+                if (document.getElementById('splashScreen').classList.contains('hidden')) {
+                    if (e.key === 'ArrowRight' || e.key === 'Space') {
+                        nextSlide();
+                    } else if (e.key === 'ArrowLeft') {
+                        prevSlide();
+                    }
+                }
+            });
+        }
+
+        /* SHARE QUOTE */
+        function shareCurrentQuote() {
+            const current = slidesData[currentSlideIndex];
+            const textToShare = `${current.tag}: "${current.quote}"\n${current.dalilTitle}: ${current.dalilText}\n\n- TENANG + 3S oleh Deka Sonjaya & Modern Spiritual`;
+
+            if (navigator.share) {
+                navigator.share({
+                    title: 'TENANG + 3S Nasihat Kebangsaan',
+                    text: textToShare,
+                    url: window.location.href,
+                }).catch(() => {});
+            } else {
+                const dummy = document.createElement('textarea');
+                document.body.appendChild(dummy);
+                dummy.value = textToShare;
+                dummy.select();
+                document.execCommand('copy');
+                document.body.removeChild(dummy);
+                showToast("Kata Mutiara disalin ke Clipboard!");
+            }
+        }
+
+        /* REFLECTION JOURNAL FEATURE */
+        function openReflectionModal() {
+            const current = slidesData[currentSlideIndex];
+            document.getElementById('reflectionSlideTitle').textContent = `Catatan Komitmen: ${current.tag}`;
+            
+            const savedNote = localStorage.getItem(`tenang_reflection_note_${current.id}`) || '';
+            document.getElementById('reflectionInput').value = savedNote;
+            document.getElementById('saveStatusMsg').classList.add('hidden');
+            
+            document.getElementById('reflectionModal').classList.remove('hidden');
+        }
+
+        function closeReflectionModal() {
+            document.getElementById('reflectionModal').classList.add('hidden');
+        }
+
+        function saveReflectionNote() {
+            const current = slidesData[currentSlideIndex];
+            const inputVal = document.getElementById('reflectionInput').value;
+            localStorage.setItem(`tenang_reflection_note_${current.id}`, inputVal);
+            
+            const statusMsg = document.getElementById('saveStatusMsg');
+            statusMsg.classList.remove('hidden');
+            
+            setTimeout(() => {
+                closeReflectionModal();
+            }, 800);
+        }
+
+        /* TASBIH DIGITAL COUNTER */
+        function toggleTasbihModal() {
+            const modal = document.getElementById('tasbihModal');
+            modal.classList.toggle('hidden');
+        }
+
+        function incrementTasbih() {
+            tasbihCount++;
+            localStorage.setItem('tenang_tasbih_count', tasbihCount);
+            updateTasbihDisplay();
+
+            if (navigator.vibrate) {
+                navigator.vibrate(35);
+            }
+        }
+
+        function resetTasbih() {
+            tasbihCount = 0;
+            localStorage.setItem('tenang_tasbih_count', 0);
+            updateTasbihDisplay();
+            showToast("Tasbih direset ke 0");
+        }
+
+        function updateTasbihDisplay() {
+            document.getElementById('tasbihCountDisplay').textContent = tasbihCount;
+        }
+
+        function changeTasbihPreset() {
+            currentPresetIndex = (currentPresetIndex + 1) % tasbihPresets.length;
+            document.getElementById('tasbihPresetName').textContent = `"${tasbihPresets[currentPresetIndex]}"`;
+        }
+
+        /* OPTIONAL AMBIENT BGM SYNTHESIZER */
+        let audioCtx = null;
+        let isBgmPlaying = false;
+        let oscillators = [];
+        let gainNode = null;
+
+        function toggleBgm() {
+            const icon = document.getElementById('bgmIcon');
+
+            if (!isBgmPlaying) {
+                startAmbientAudio();
+                isBgmPlaying = true;
+                if (icon) icon.className = 'fa-solid fa-music text-gold-400 text-xs sm:text-sm animate-pulse';
+                showToast("Musik Ambient Meditatif Aktif");
+            } else {
+                stopAmbientAudio();
+                isBgmPlaying = false;
+                if (icon) icon.className = 'fa-solid fa-music text-xs sm:text-sm opacity-70';
+                showToast("Musik Ambient Dimatikan");
+            }
+        }
+
+        function startAmbientAudio() {
+            try {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                audioCtx = new AudioContext();
+
+                const osc1 = audioCtx.createOscillator();
+                const osc2 = audioCtx.createOscillator();
+                gainNode = audioCtx.createGain();
+
+                osc1.type = 'sine';
+                osc2.type = 'triangle';
+
+                osc1.frequency.setValueAtTime(108, audioCtx.currentTime);
+                osc2.frequency.setValueAtTime(216, audioCtx.currentTime);
+
+                gainNode.gain.setValueAtTime(0.001, audioCtx.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.05, audioCtx.currentTime + 3);
+
+                osc1.connect(gainNode);
+                osc2.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+
+                osc1.start();
+                osc2.start();
+
+                oscillators = [osc1, osc2];
+            } catch (e) {
+                console.log("Audio Context Synth Exception", e);
+            }
+        }
+
+        function stopAmbientAudio() {
+            if (gainNode && audioCtx) {
+                gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 1);
+                setTimeout(() => {
+                    if (oscillators) {
+                        oscillators.forEach(o => o.stop());
+                    }
+                    if (audioCtx) {
+                        audioCtx.close();
+                    }
+                }, 1000);
+            }
+        }
+
+        /* PWA INSTALLATION LOGIC */
+        function initPWA() {
+            const manifestData = {
+                name: "TENANG + 3S: Refleksi Kebangsaan & Keluarga",
+                short_name: "TENANG + 3S",
+                start_url: ".",
+                display: "standalone",
+                background_color: "#04150D",
+                theme_color: "#0A2618",
+                icons: [
+                    {
+                        src: "https://placehold.co/192x192/0A2618/D4AF37?text=TENANG",
+                        sizes: "192x192",
+                        type: "image/png"
+                    },
+                    {
+                        src: "https://placehold.co/512x512/0A2618/D4AF37?text=TENANG",
+                        sizes: "512x512",
+                        type: "image/png"
+                    }
+                ]
+            };
+
+            const manifestBlob = new Blob([JSON.stringify(manifestData)], { type: 'application/json' });
+            const manifestUrl = URL.createObjectURL(manifestBlob);
+            const link = document.createElement('link');
+            link.rel = 'manifest';
+            link.href = manifestUrl;
+            document.head.appendChild(link);
+
+            window.addEventListener('beforeinstallprompt', (e) => {
+                e.preventDefault();
+                deferredPrompt = e;
+                const btn = document.getElementById('installPwaBtn');
+                const banner = document.getElementById('mobileInstallBanner');
+                if (btn) btn.classList.remove('hidden');
+                if (banner) banner.classList.remove('hidden');
+            });
+        }
+
+        function promptInstallPWA() {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        showToast("Aplikasi berhasil diinstall!");
+                    }
+                    deferredPrompt = null;
+                });
+            } else {
+                showToast("iOS: Tekan tombol Share -> 'Add to Home Screen'");
+            }
+        }
+
+        /* TOAST UTILITY */
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMsg').textContent = msg;
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
